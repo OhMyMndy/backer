@@ -39,4 +39,5 @@ def get_playlists():
 
 for playlist in get_playlists():
     print(f'Downloading {playlist["title"]}')
-    deemix.download(playlist["link"], None, True, None)
+
+    deemix.download([playlist["link"]], None, True, None)
