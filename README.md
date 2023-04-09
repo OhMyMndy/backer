@@ -11,3 +11,9 @@ podman build -t ohmymndy/backer:0.1 .
 podman run --rm -it -v "$HOME/Music:/root/Music" ohmymndy/backer:0.1 <deezer-id> <deezer-arl> <search-term>
 
 ```
+
+
+# Developing
+
+Build the container
+`podman build -t ohmymndy/backer:0.1 .`

@@ -18,6 +18,7 @@ f.write(deezer_arl)
 f.close()
 
 search_term = sys.argv[3]
+
 def get_playlists():
     playlists = []
     url = api_url

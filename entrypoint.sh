@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
+#source /app/.venv/bin/activate
 
-echo "$@"
-/app/.venv/bin/python3 main.py $@
+exec python3 main.py $@
