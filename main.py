@@ -4,12 +4,14 @@ import requests
 import json
 import deemix
 import deemix.utils.localpaths as localpaths
+import spleet
 
 user_id = sys.argv[1]
 api_url = f'https://api.deezer.com/user/{user_id}/playlists'
 
 deezer_arl = sys.argv[2]
-os.mkdir(localpaths.getConfigFolder())
+if not os.path.exists(localpaths.getConfigFolder()):
+    os.mkdir(localpaths.getConfigFolder())
 
 arl_path = localpaths.getConfigFolder() / '.arl'
 
@@ -38,7 +40,17 @@ def get_playlists():
     return playlists
 
 
+class Listener:
+    @classmethod
+    def send(cls, key, value=None):
+        # print(key, value)
+        if key == 'updateQueue' and "downloaded" in value and value["downloaded"] == True:
+            downloaded_files.append(value["downloadPath"])
+
+
 for playlist in get_playlists():
     print(f'Downloading {playlist["title"]}')
+    downloaded_files = []
+    deemix.download([playlist["link"]], None, True, None, Listener)
 
-    deemix.download([playlist["link"]], None, True, None)
+    spleet.spleet(files)
