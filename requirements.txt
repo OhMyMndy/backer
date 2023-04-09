@@ -1,0 +1,3 @@
+deemix @ git+https://gitlab.com/OhMyMndy/deemix-py.git@uploaded-mp3s
+
+spleeter
